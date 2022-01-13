@@ -398,6 +398,8 @@ class BaseMechanicalTest:
         y_label: Optional[str] = None,
         height: int = 500,
         width: int = 750,
+        xLower: Optional[float] = 0.0,
+        xUpper: Optional[float] = 0.5,
     ) -> alt.Chart:
         """
         Creates a nice looking stress strain plot of all the specimens using altair.
@@ -429,6 +431,14 @@ class BaseMechanicalTest:
 
             width (int, optional): Width of the plot.
                 Defaults to 750.
+                
+            xLower (float, optional): lower bound of x axis
+                Defaults to 0
+                
+             xUpper (float, optional): Upper bound of x axis
+                Defaults to 0.5
+                               
+                
 
         Returns:
             alt.Chart: Stress strain plot.
@@ -452,7 +462,7 @@ class BaseMechanicalTest:
             alt.Chart(data=df)
             .mark_line(size=1)
             .encode(
-                x=alt.X(f"{self.strain_col}:Q", title=x_label),
+                x=alt.X(f"{self.strain_col}:Q" scale=alt.Scale(domain=(xLower, xUpper)), title=x_label),
                 y=alt.Y(f"{self.stress_col}:Q", title=y_label),
                 color=alt.Color("Specimen ID:N", title="Specimen ID"),
             )
