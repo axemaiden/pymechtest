@@ -462,7 +462,7 @@ class BaseMechanicalTest:
             alt.Chart(data=df)
             .mark_line(size=1, clip=True)
             .encode(
-                x=alt.X(f"{self.strain_col}:Q", scale=alt.Scale(domain=(strain1, strain2)), title=x_label),
+                x=alt.X(f"{self.strain_col}:Q", scale=alt.Scale(domain=(0, 0.5)), title=x_label),
                 y=alt.Y(f"{self.stress_col}:Q", title=y_label),
                 color=alt.Color("Specimen ID:N", title="Specimen ID"),
             )
