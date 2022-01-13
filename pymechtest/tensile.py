@@ -9,7 +9,7 @@ Created: 31/12/20
 from pathlib import Path
 from typing import Optional, Union
 
-from pymechtest.base import BaseMechanicalTest
+from axemaidenpymechtest.base import BaseMechanicalTest
 
 
 class Tensile(BaseMechanicalTest):
